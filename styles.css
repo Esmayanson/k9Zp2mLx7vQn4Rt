@@ -1,0 +1,596 @@
+/* PALETA DE COLORES - ACTUALIZADA */
+:root {
+    /* Nuevos colores del logo: Azul Celeste y Verde */
+    --color-primary: #0891B2; /* Azul Celeste (para encabezados, títulos) */
+    --color-secondary: #10B981; /* Verde (para bordes de cards, acentos) */
+    --color-accent: #3b82f6; /* Azul más fuerte para botones */
+    --color-danger: #ef4444; /* Rojo para Patológico */
+    --color-success: #10b981; /* Verde para Normal/Éxito */
+    --color-background: #f4f6f8; /* Gris muy claro (fondo) */
+    --color-white: #ffffff;
+    --color-text-dark: #1f2937; /* Gris muy oscuro */
+    --color-text-light: #4b5563;
+}
+
+/* GENERALES Y TIPOGRAFÍA */
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif; /* Tipografía moderna */
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    padding-bottom: 70px; /* Espacio para el footer fijo */
+    color: var(--color-text-light);
+}
+
+h1, h2, h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+}
+
+/* CABECERA (HEADER) - DISEÑO MODERNO */
+.report-header {
+    background: linear-gradient(90deg, #0284c7 0%, var(--color-primary) 100%); /* Degradado */
+    padding: 10px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centrar el contenido */
+    align-items: center;
+    gap: 20px;
+    padding: 0 15px; /* Asegurar padding en móviles */
+}
+.center-logo {
+    max-height: 40px; /* Tamaño reducido para mejor disposición */
+    width: auto;
+    display: block;
+}
+
+/* Títulos y textos dentro del div oculto en impresión */
+.header-text-container h1 {
+    margin: 0;
+    font-size: 1.5em; /* Tamaño ajustado */
+    color: var(--color-white);
+}
+
+.header-text-container p {
+    margin: 0;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* CONTENEDOR PRINCIPAL Y LAYOUT DE GRID */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.grid-layout {
+    display: flex;
+    gap: 20px;
+}
+
+/* MÓDULOS BASE (PANELES) - CARDS CON SOMBRAS SUTILES */
+.control-panel,
+.main-area {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    border: 1px solid #e5e7eb;
+}
+
+.control-panel {
+    flex: 0 0 280px; /* Ancho reducido (280px) */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main-area {
+    flex: 1;
+}
+
+/* SECCIONES Y FORMULARIOS */
+.module h2 {
+    border-bottom: 2px solid var(--color-secondary); /* Nuevo acento de color */
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+.module h2 i {
+    color: var(--color-primary);
+    margin-right: 8px;
+}
+
+/* Formulario de Paciente Mejorado (Diseño en filas) */
+#patient-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 campos por fila para ahorrar espacio */
+    gap: 10px;
+}
+
+#patient-form input,
+#patient-form select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+    transition: border-color 0.2s;
+}
+
+#patient-form input:focus,
+#patient-form select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(8, 145, 178, 0.2);
+}
+
+/* Para campos de una sola columna (Médico/Sonografista/Fecha) */
+#medico-solicitante, #sonografista, #fecha-estudio {
+    grid-column: span 2;
+}
+
+/* LISTA DE ÓRGANOS - REEMPLAZADO POR TABLA COMPACTA */
+.organ-table-container {
+    max-height: 400px; /* Altura máxima para el scroll */
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+/* Scrollbar Personalizado (Webkit) */
+.organ-table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.organ-table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.organ-table-container::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 10px;
+}
+.organ-table-container::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4;
+}
+
+.organ-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.organ-table th {
+    background-color: #f8fafc;
+    color: var(--color-primary);
+    font-size: 0.85em;
+    padding: 10px 8px;
+    text-align: left;
+    position: sticky; /* Encabezado fijo al hacer scroll */
+    top: 0;
+    z-index: 10;
+}
+
+.organ-row {
+    cursor: pointer;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.15s;
+}
+
+.organ-row:hover {
+    background-color: #f9f9f9;
+}
+
+.organ-row.active-patologico {
+    background-color: #fee2e2; /* Fondo sutil para patológico activo */
+}
+
+.organ-cell {
+    padding: 8px;
+    font-size: 0.9em;
+    color: var(--color-text-dark);
+    vertical-align: middle;
+}
+
+.organ-cell:first-child {
+    font-weight: 600;
+}
+.organ-cell i {
+    margin-right: 5px;
+    color: var(--color-primary);
+}
+
+/* TOGGLE BOTONES N/P COMPACTOS */
+.toggle-group {
+    display: flex;
+    gap: 2px;
+}
+
+.toggle-btn {
+    /* Hacer el botón más pequeño y compacto */
+    padding: 5px 8px; 
+    font-size: 0.8em;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    min-width: 45px; /* Ancho mínimo para N y P */
+    text-align: center;
+}
+.toggle-btn i {
+    margin-right: 3px;
+}
+
+.toggle-btn.normal, .toggle-btn.patologico {
+    background-color: #e5e7eb;
+    color: #6b7280;
+}
+
+/* Estados Activos */
+.toggle-btn.normal.active {
+    background-color: var(--color-success);
+    color: var(--color-white);
+    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.4);
+}
+
+.toggle-btn.patologico.active {
+    background-color: var(--color-danger);
+    color: var(--color-white);
+    box-shadow: 0 1px 3px rgba(239, 68, 68, 0.4);
+}
+
+/* Efectos Hover */
+.toggle-btn:hover:not(.active) {
+    background-color: #d1d5db;
+}
+
+
+/* FILA DE DETALLES EXPANDIBLE */
+.patology-details-row.hidden {
+    display: none;
+}
+
+.patology-details-cell {
+    padding: 10px;
+    background-color: #fcfcfc;
+    border-left: 3px solid var(--color-secondary);
+}
+
+.patology-details-cell .measurement-field {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.patology-details-cell .measurement-field label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 3px;
+}
+
+.measure-input {
+    padding: 6px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    width: 150px; /* Ancho fijo para el campo de medida */
+}
+
+.range-info {
+    font-size: 0.75em;
+    color: var(--color-text-light);
+    display: block;
+}
+
+/* Estilos de Checkbox Moderno */
+.patology-options {
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #eee;
+}
+.patology-checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.patology-checkbox-group label {
+    font-weight: normal;
+    font-size: 0.9em;
+    margin-left: 5px;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    transition: color 0.1s;
+}
+.patology-checkbox-group:hover label {
+    color: var(--color-primary);
+}
+.patology-checkbox {
+    /* Ocultar checkbox nativo y usar estilos */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #9ca3af;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    transition: all 0.2s;
+}
+
+.patology-checkbox:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.patology-checkbox:checked::after {
+    content: '\f00c'; /* Icono de check (FontAwesome) */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 10px;
+    color: var(--color-white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Checkbox para Sugerencias */
+.checkbox-group label {
+    font-weight: normal;
+    font-size: 0.9em;
+    margin-left: 5px;
+    color: var(--color-text-dark);
+}
+
+/* --- ESTILOS DE DATOS DEL PACIENTE (PANTALLA) --- */
+/* Mantenidos, pero con mejor visualización en pantalla */
+.patient-info-block.print-grid-container {
+    background-color: #eff6ff; /* Fondo para resaltar en pantalla */
+    border: 1px solid #bfdbfe !important;
+    border-radius: 8px;
+    padding: 10px 15px !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para optimizar espacio */
+    gap: 8px 15px;
+}
+.patient-info-block.print-grid-container strong {
+    color: var(--color-primary);
+}
+.patient-info-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.9em;
+}
+
+
+/* ÁREA DEL EDITOR Y REPORTE */
+#report-preview-area {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    line-height: 1.6;
+    font-family: 'Times New Roman', serif;
+    font-size: 11pt;
+    min-height: 600px;
+}
+#notes-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+
+/* BARRA DE ACCIONES (FOOTER) */
+#action-bar {
+    background-color: var(--color-white);
+    border-top: 2px solid var(--color-secondary); /* Nuevo acento */
+    padding: 12px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    text-align: center;
+}
+
+#action-bar > div {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Botones Rediseñados */
+.btn {
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn i {
+    margin-right: 8px;
+}
+
+/* Colores de botones */
+.btn-yellow {
+    background-color: #fcd34d; /* Amarillo más moderno */
+    color: var(--color-text-dark);
+}
+.btn-yellow:hover {
+    background-color: #fbbf24;
+}
+
+.btn-blue {
+    background-color: var(--color-primary);
+    color: white;
+}
+.btn-blue:hover {
+    background-color: #06b6d4;
+}
+
+.btn-green {
+    background-color: var(--color-success);
+    color: white;
+}
+.btn-green:hover {
+    background-color: #059669;
+}
+
+
+/* ======================================================= */
+/* ✅ MEDIOS DE IMPRESIÓN (Mantenido y Ajustado) */
+/* ======================================================= */
+
+@media print {
+    /* Ocultar elementos de control */
+    .control-panel, #action-bar {
+        display: none !important;
+    }
+    
+    /* Layout principal al 100% */
+    .grid-layout {
+        display: block !important;
+    }
+    .main-area {
+        flex: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+    }
+    .container {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ajuste para el nuevo header */
+    .report-header {
+        background: none !important; /* Eliminar el degradado de fondo */
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    
+    .header-content {
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: column !important; /* Volver a apilar verticalmente */
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+    .center-logo {
+        max-height: 40px !important; /* Altura máxima para la impresión */
+        margin: 0 auto 5px auto !important;
+    }
+    .header-text-container {
+        display: none !important; /* Ocultar el texto del header */
+    }
+
+    /* Contenedor principal del reporte */
+    #report-preview-area {
+        border: none !important;
+        padding: 0 !important;
+        min-height: auto !important;
+    }
+    
+    /* Datos del paciente */
+    .patient-info-block.print-grid-container {
+        background-color: white !important;
+        border-color: #000 !important;
+        border: 1px solid #000 !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        padding: 5px 10px !important;
+        margin-bottom: 10px;
+    }
+    .patient-info-block.print-grid-container strong {
+        color: #000 !important;
+    }
+    
+    /* Contenido del reporte */
+    #report-output {
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        line-height: 1.4 !important;
+        font-size: 10pt !important;
+    }
+    
+    /* Conclusiones (Impresión Diagnóstica) */
+    .report-heading {
+        margin: 5px 0 2px 0 !important;
+        font-size: 10pt !important;
+        font-weight: bold !important;
+        color: #000 !important;
+    }
+    
+    #notes-box {
+        border: none !important;
+        resize: none !important;
+        height: auto !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 2px 0 3px 0 !important;
+        line-height: 1.2 !important;
+    }
+    
+    #report-conclusions-final ul {
+        font-size: 9pt !important;
+        margin: 2px 0 5px 0 !important;
+        padding-left: 18px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Firma */
+    .report-footer-preview {
+        display: block !important;
+        margin-top: 8px !important;
+        padding-top: 3px !important;
+        text-align: center;
+        page-break-inside: avoid !important;
+    }
+    
+    .signature-line {
+        width: 50% !important;
+        margin: 2px auto !important;
+        border-top: 1px solid #000 !important;
+    }
+    
+    .signature-name {
+        color: #000 !important;
+        margin: 2px 0 0 0 !important;
+        font-size: 9pt !important;
+        font-style: italic;
+    }
+    
+    .signature-title {
+        color: #000 !important;
+        margin: 0 !important;
+        font-size: 9pt !important;
+    }
+}

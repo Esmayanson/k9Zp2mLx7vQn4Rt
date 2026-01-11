@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Interactivo de Informes Sonográficos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="header-content">
+            <img src="titulo_reporte.png" alt="Logo Institucional" class="center-logo">
+            <div class="header-text-container hidden-on-print">
+                <h1>GENERADOR INTERACTIVO DE INFORMES SONOGRÁFICOS</h1>
+                <p>Estudio Ecográfico Abdominal</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid-layout">
+            
+            <aside class="control-panel">
+                
+                <section id="patient-data-module" class="module">
+                    <h2><i class="fas fa-user-injured"></i> Datos del Paciente</h2>
+                    
+                    <form id="patient-form">
+                        <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+                        <input type="number" placeholder="Edad" id="edad" name="edad" required>
+                        <select id="sexo" name="sexo" required>
+                            <option value="" disabled selected>Seleccione Sexo</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                        <input type="text" placeholder="Identificación" id="identificacion" name="identificacion">
+                        <input type="text" placeholder="Médico Solicitante" id="medico-solicitante" name="medico-solicitante">
+                        <select id="sonografista" name="sonografista" required>
+                            <option value="" disabled selected>Seleccione Médico Sonografista</option>
+                            <option value="Dr. Esmayanson de León">Dr. Esmayanson de León</option>
+                            <option value="Dr. Ibrahim Pérez">Dr. Ibrahim Pérez</option>
+                            <option value="Dr. Randy Báez">Dr. Randy Báez</option>
+                            <option value="Dr. Julio Peralta">Dr. Julio Peralta</option>
+                        </select>
+                        <input type="date" id="fecha-estudio" name="fecha-estudio" required>
+                    </form>
+                </section>
+
+                <hr>
+
+                <section id="organ-selector-module" class="module">
+                    <h2><i class="fas fa-microscope"></i> Evaluación de Órganos</h2>
+                    <div id="organ-list" class="organ-table-container">
+                        </div>
+                </section>
+                
+                <hr>
+                <section id="conclusions-module-sidebar" class="module">
+                    <h2><i class="fas fa-clipboard-check"></i> Sugerencias</h2>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sugerencia-clinico" name="sugerencia-clinico" class="patology-checkbox">
+                        <label for="sugerencia-clinico">Sugerir correlación con cuadro clínico.</label><br>
+                        <input type="checkbox" id="sugerencia-complementario" name="sugerencia-complementario" class="patology-checkbox">
+                        <label for="sugerencia-complementario">Sugerir estudio complementario.</label>
+                    </div>
+                </section>
+            </aside>
+
+            <section class="main-area">
+                
+                <section id="report-editor-module" class="module">
+                    
+                    <div id="report-preview-area">
+                        
+                        <div id="patient-data-output"></div>
+                        
+                        <p class="report-heading">DESCRIPCIÓN SONOGRÁFICA ABDOMINAL</p>
+                        <p class="report-technique">
+                            <strong>TÉCNICA:</strong> Se realizó un estudio ecográfico abdominal completo utilizando un transductor convexo de banda ancha (3.5 a 5 MHz). Se evaluaron los órganos sólidos y las estructuras huecas, en múltiples planos y con respiración controlada.
+                        </p>
+                        
+                        <div id="report-output" contenteditable="true" class="wysiwyg-editor">
+                            <div id="organ-descriptions">
+                                </div>
+                        </div>
+
+                        <section id="report-conclusions-final" class="module">
+                            <p class="report-heading">IMPRESIÓN DIAGNÓSTICA</p>
+                            <textarea id="notes-box" rows="3" placeholder="Escriba aquí cualquier información extra que deba ir en la Impresión Diagnóstica."></textarea>
+                        </section>
+
+                        <div class="report-footer-preview">
+                            <hr class="signature-line">
+                            <p id="sonografista-signature-preview" class="signature-name">[Dr(a). Nombre del Médico Sonografista]</p>
+                            <p class="signature-title">Médico Sonografista</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <footer id="action-bar">
+        <div>
+            <button id="new-report-btn" class="btn btn-yellow"><i class="fas fa-undo"></i> Nuevo Informe</button>
+            <button id="generate-report-btn" class="btn btn-blue"><i class="fas fa-eye"></i> Generar Informe</button>
+            <button id="print-save-btn" class="btn btn-green"><i class="fas fa-print"></i> Imprimir/PDF</button>
+        </div>
+    </footer>
+
+    <script src="organ_templates.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>
